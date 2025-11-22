@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "better-auth": "^1.4.0",
     "drizzle-orm": "^0.44.7",
     "next": "16.0.3",
     "pg": "^8.16.3",
