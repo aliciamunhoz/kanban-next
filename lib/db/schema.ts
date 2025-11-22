@@ -1,3 +1,4 @@
+import { create } from "domain";
 import { desc, relations } from "drizzle-orm";
 import {
   boolean,
@@ -28,6 +29,9 @@ export const sessionTable = pgTable("session", {
   userId: text("user_id")
     .notNull()
     .references(() => userTable.id, { onDelete: "cascade" }),
+  createdAt: timestamp("created_at", { mode: "date" }).notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).notNull(),
+  token: text().notNull(),
 });
 
 export const accountTable = pgTable("account", {
@@ -41,6 +45,8 @@ export const accountTable = pgTable("account", {
   refreshToken: text("refresh_token"),
   idToken: text("id_token"),
   expiresAt: timestamp("expires_at", { mode: "date" }),
+  createdAt: timestamp("created_at", { mode: "date" }).notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).notNull(),
   password: text(),
 });
 
