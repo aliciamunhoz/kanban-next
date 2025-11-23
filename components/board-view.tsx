@@ -89,7 +89,7 @@ export function BoardView({
   async function onAddColumn(data: ColumnFormValues) {
     setIsLoading(true);
     try {
-      const response = await fetch(`api/boards/${initialBoard.id}/columns`, {
+      const response = await fetch(`/api/boards/${initialBoard.id}/columns`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -94,7 +94,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
   } catch (error) {
     console.error("Error sharing board:", error);
     return NextResponse.json(
-      { error: "Failed to share board" },
+      { error: "Falha ao compartilhar o quadro" },
       { status: 500 }
     );
   }

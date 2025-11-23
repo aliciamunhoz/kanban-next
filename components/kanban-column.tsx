@@ -1,6 +1,6 @@
 "use client";
 
-import { Card as KanbanCard } from "@/types/card";
+import { cardFormSchema, Card as KanbanCard } from "@/types/card";
 import { Column, columnFormSchema, ColumnFormValues } from "@/types/column";
 import {
   Draggable,
@@ -45,12 +45,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-
-export const cardFormSchema = z.object({
-  title: z.string().min(1, "Título é obrigatório"),
-  description: z.string().optional(),
-  priority: z.enum(["low", "medium", "high"]).default("medium"),
-});
 
 type CardFormValues = z.infer<typeof cardFormSchema>;
 

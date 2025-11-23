@@ -2,13 +2,13 @@ import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { eq, or, and } from "drizzle-orm";
-import { cardFormSchema } from "@/components/kanban-column";
 import {
   boardAccessTable,
   boardsTable,
   cardsTable,
   columnsTable,
 } from "@/lib/db/schema";
+import { cardFormSchema } from "@/types/card";
 
 interface RouteContext {
   params: Promise<{ cardId: string }>;

@@ -8,7 +8,7 @@ import {
   cardsTable,
   columnsTable,
 } from "@/lib/db/schema";
-import { cardFormSchema } from "@/components/kanban-column";
+import { cardFormSchema } from "@/types/card";
 
 interface RouteContext {
   params: Promise<{ columnId: string }>;
