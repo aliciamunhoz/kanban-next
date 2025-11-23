@@ -21,7 +21,7 @@ import Link from "next/link";
 const signUpSchema = z.object({
   name: z.string().min(2, "O nome deve ter no mínimo 2 caracteres"),
   email: z.email("E-mail inválido"),
-  password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+  password: z.string().min(8, "A senha deve ter no mínimo 8 caracteres"),
 });
 
 type SignUpFormData = z.infer<typeof signUpSchema>;
