@@ -91,17 +91,16 @@ export function KanbanColumn({
     setValue: setValueCard,
     watch: watchCard,
     formState: { errors: cardErrors },
-  } = useForm<CardFormValues>({
+  } = useForm({
     resolver: zodResolver(cardFormSchema),
     defaultValues: {
-      priority: "medium",
+      priority: "medium" as const,
     },
   });
 
   const {
     register: registerColumn,
     handleSubmit: handleSubmitColumn,
-    reset: resetColumn,
     formState: { errors: columnErrors },
   } = useForm<ColumnFormValues>({
     resolver: zodResolver(columnFormSchema),
@@ -132,7 +131,7 @@ export function KanbanColumn({
         );
         setShowAddCard(false);
       }
-      resetCard({ priority: "média" });
+      resetCard({ priority: "medium" });
     } finally {
       setIsLoading(false);
     }
@@ -152,8 +151,8 @@ export function KanbanColumn({
     setEditingCard(card);
     resetCard({
       title: card.title,
-      description: card.description,
-      priority: card.priority as "baixa" | "média" | "alta",
+      description: card.description || "",
+      priority: card.priority as "low" | "medium" | "high",
     });
   }
 
