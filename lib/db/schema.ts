@@ -105,7 +105,7 @@ export const cardsTable = pgTable(
   "cards",
   {
     id: uuid().primaryKey().defaultRandom(),
-    columnIdL: uuid("column_id")
+    columnId: uuid("column_id")
       .notNull()
       .references(() => columnsTable.id, { onDelete: "cascade" }),
     title: varchar({ length: 255 }).notNull(),
@@ -115,7 +115,7 @@ export const cardsTable = pgTable(
     createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   },
   (table) => ({
-    columnIdx: index("idx_cards_column").on(table.columnIdL),
+    columnIdx: index("idx_cards_column").on(table.columnId),
   })
 );
 
@@ -138,7 +138,7 @@ export const columnsRelations = relations(columnsTable, ({ many, one }) => ({
 
 export const cardsRelations = relations(cardsTable, ({ one }) => ({
   column: one(columnsTable, {
-    fields: [cardsTable.columnIdL],
+    fields: [cardsTable.columnId],
     references: [columnsTable.id],
   }),
 }));
