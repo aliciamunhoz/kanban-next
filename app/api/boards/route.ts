@@ -1,7 +1,7 @@
-import { createBoardSchema } from "@/components/boards-list";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { boardAccessTable, boardsTable, userTable } from "@/lib/db/schema";
+import { createBoardSchema } from "@/types/board";
 import { desc, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
