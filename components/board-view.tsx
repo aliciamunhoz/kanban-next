@@ -47,7 +47,7 @@ interface BoardViewProps {
   users: User[];
 }
 
-const shareFormSchema = z.object({
+export const shareFormSchema = z.object({
   email: z.email("E-mail inválido"),
 });
 

@@ -18,28 +18,13 @@ import {
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-
-interface Board {
-  id: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface SharedBoard extends Board {
-  ownerName: string;
-  ownerEmail: string;
-}
+import { Board, createBoardSchema, SharedBoard } from "@/types/board";
 
 interface BoardsListProps {
   ownedBoards: Board[];
   sharedBoards: SharedBoard[];
   userId: string;
 }
-
-export const createBoardSchema = z.object({
-  name: z.string().min(1, "O nome do quadro é obrigatório"),
-});
 
 type CreateBoardFormData = z.infer<typeof createBoardSchema>;
 
