@@ -9,6 +9,12 @@ export interface Card {
   position: number;
 }
 
+export const PRIORITY = {
+  low: "Baixa",
+  medium: "Média",
+  high: "Alta",
+};
+
 export const cardFormSchema = z.object({
   title: z.string().min(1, "Título é obrigatório"),
   description: z.string().optional(),

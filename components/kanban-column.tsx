@@ -1,6 +1,6 @@
 "use client";
 
-import { cardFormSchema, Card as KanbanCard } from "@/types/card";
+import { cardFormSchema, Card as KanbanCard, PRIORITY } from "@/types/card";
 import { Column, columnFormSchema, ColumnFormValues } from "@/types/column";
 import {
   Draggable,
@@ -274,7 +274,7 @@ export function KanbanColumn({
                               card.priority
                             )} text-white border-0`}
                           >
-                            {card.priority}
+                            {PRIORITY[card.priority as keyof typeof PRIORITY]}
                           </Badge>
                         </div>
                       </Card>
