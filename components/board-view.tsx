@@ -26,6 +26,7 @@ import {
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { shareFormSchema } from "@/types/share";
 
 interface Board {
   id: string;
@@ -46,10 +47,6 @@ interface BoardViewProps {
   cards: Card[];
   users: User[];
 }
-
-export const shareFormSchema = z.object({
-  email: z.email("E-mail inválido"),
-});
 
 type ShareFormValues = z.infer<typeof shareFormSchema>;
 

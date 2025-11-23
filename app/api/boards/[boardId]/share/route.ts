@@ -3,7 +3,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { eq, and, desc } from "drizzle-orm";
 import { boardAccessTable, boardsTable, userTable } from "@/lib/db/schema";
-import { shareFormSchema } from "@/components/board-view";
+import { shareFormSchema } from "@/types/share";
 
 interface RouteContext {
   params: Promise<{ boardId: string }>;
@@ -45,7 +45,10 @@ export async function POST(req: NextRequest, context: RouteContext) {
       .limit(1);
 
     if (!targetUser) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Usuário não encontrado" },
+        { status: 404 }
+      );
     }
 
     const [existing] = await db
