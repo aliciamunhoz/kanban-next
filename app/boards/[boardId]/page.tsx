@@ -33,13 +33,7 @@ export default async function BoardPage({ params }: BoardPageProps) {
       owner_id: boardsTable.ownerId,
     })
     .from(boardsTable)
-    .leftJoin(
-      boardAccessTable,
-      and(
-        eq(boardsTable.ownerId, session.user.id),
-        eq(boardAccessTable.userId, session.user.id)
-      )
-    )
+    .leftJoin(boardAccessTable, eq(boardAccessTable.userId, session.user.id))
     .where(
       and(
         eq(boardsTable.id, boardId),
@@ -94,34 +88,34 @@ export default async function BoardPage({ params }: BoardPageProps) {
       .innerJoin(userTable, eq(boardAccessTable.userId, userTable.id))
       .where(eq(boardAccessTable.boardId, boardId))
       .orderBy(desc(boardAccessTable.grantedAt));
-
-    return (
-      <BoardView
-        board={{
-          id: board.id,
-          name: board.name,
-          isOwner,
-        }}
-        columns={columnsData.map((c) => ({
-          id: c.id,
-          name: c.name,
-          position: c.position,
-        }))}
-        cards={cardsData.map((c) => ({
-          id: c.id,
-          columnId: c.column_id,
-          title: c.title,
-          description: c.description || "",
-          priority: c.priority,
-          position: c.position,
-        }))}
-        users={usersData.map((u) => ({
-          id: u.id,
-          email: u.email,
-          name: u.name,
-          grantedAt: u.granted_at.toISOString(),
-        }))}
-      />
-    );
   }
+
+  return (
+    <BoardView
+      board={{
+        id: board.id,
+        name: board.name,
+        isOwner,
+      }}
+      columns={columnsData.map((c) => ({
+        id: c.id,
+        name: c.name,
+        position: c.position,
+      }))}
+      cards={cardsData.map((c) => ({
+        id: c.id,
+        columnId: c.column_id,
+        title: c.title,
+        description: c.description || "",
+        priority: c.priority,
+        position: c.position,
+      }))}
+      users={usersData.map((u) => ({
+        id: u.id,
+        email: u.email,
+        name: u.name,
+        grantedAt: u.granted_at.toISOString(),
+      }))}
+    />
+  );
 }
