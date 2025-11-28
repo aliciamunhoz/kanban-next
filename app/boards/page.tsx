@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { boardAccessTable, boardsTable, userTable } from "@/lib/db/schema";
 import { desc, eq } from "drizzle-orm";
 import { headers } from "next/headers";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export default async function BoardsPage() {
@@ -46,11 +47,14 @@ export default async function BoardsPage() {
     <div className="min-h-screen from-background via-muted/20 to-background">
       <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Meus quadros</h1>
-            <p className="text-sm text-muted-foreground">
-              Bem-vindo de volta, {session.user.name || session.user.email}
-            </p>
+          <div className="flex items-center gap-2">
+            <Image src="/icon.png" alt="KanbanFlow" width={48} height={48} />
+            <div>
+              <h1 className="text-2xl font-bold">Meus quadros</h1>
+              <p className="text-sm text-muted-foreground">
+                Bem-vindo de volta, {session.user.name || session.user.email}
+              </p>
+            </div>
           </div>
           <form action="/api/sign-out" method="POST">
             <Button variant="outline" size="sm" type="submit">

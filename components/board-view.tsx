@@ -27,6 +27,7 @@ import {
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { shareFormSchema } from "@/types/share";
+import Image from "next/image";
 
 interface Board {
   id: string;
@@ -336,6 +337,7 @@ export function BoardView({
             >
               <ArrowLeftIcon className="w-5 h-5" />
             </Button>
+            <Image src="/icon.png" alt="KanbanFlow" width={36} height={48} />
             <h1 className="text-2xl font-bold">{initialBoard.name}</h1>
           </div>
           {initialBoard.isOwner && (

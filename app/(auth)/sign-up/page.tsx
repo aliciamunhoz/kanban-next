@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn, signUp } from "@/lib/auth-client";
+import { signUp } from "@/lib/auth-client";
 import {
   Card,
   CardContent,
@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const signUpSchema = z.object({
   name: z.string().min(2, "O nome deve ter no mínimo 2 caracteres"),
@@ -66,7 +67,8 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center from-background via-muted/20 to-background p-4">
       <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
+        <CardHeader className="space-y-1 flex flex-col items-center">
+          <Image src="/logo.png" alt="KanbanFlow" width={200} height={100} />
           <CardTitle className="text-2xl font-bold">Cadastrar</CardTitle>
           <CardDescription>Crie uma conta para continuar</CardDescription>
         </CardHeader>

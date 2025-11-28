@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const signInSchema = z.object({
   email: z.email("E-mail inválido"),
@@ -62,9 +63,10 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center from-background via-muted/20 to-background p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center from-background via-muted/20 to-background p-4">
       <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
+        <CardHeader className="space-y-1 flex flex-col items-center">
+          <Image src="/logo.png" alt="KanbanFlow" width={200} height={100} />
           <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
           <CardDescription>Faça login para continuar</CardDescription>
         </CardHeader>
